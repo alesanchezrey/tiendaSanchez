@@ -1,4 +1,6 @@
-import logo from '../funkologo.png'
+import logo from '../../funkologo.png'
+import CartWidget from '../CartWidget/CartWidget'
+
 const NavBar = () => {
     return (
         <div className='navBarMenu'>
@@ -12,7 +14,7 @@ const NavBar = () => {
                     <li><a href="#">Contacto</a></li>
                  </ul>
             </div>
-            <div></div>
+            <div><CartWidget /></div>
         </div>
     )
 }
