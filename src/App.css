@@ -74,3 +74,12 @@ a { text-decoration: none;
 .navBarMenu img {
   padding: 10px;
 }
+
+.contOp {
+  display: inline-flex;
+  padding: 20px;
+}
+
+.contOp div {
+  padding: 10px;
+}
