@@ -6,11 +6,15 @@ import ItemCount from './components/ItemCount/ItemCount';
 
 function App() {
   const stock = 5
+  const handleOnAdd = (cantidad) => {
+    alert(`Agregaste ${cantidad} productos al carrito`)
+  }
+
   return (
     <div className="App">
       <NavBar />
       <ItemListContainer greeting="Bienvenido a Funko Pop Stars" />
-      <ItemCount stock={stock}/>
+      <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
