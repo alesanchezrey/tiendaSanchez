@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemCount from './components/ItemCount/ItemCount';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
   const stock = 5
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <ItemListContainer greeting="Bienvenido a Funko Pop Stars" />
+      <ItemDetailContainer greeting="Bienvenido a Funko Pop Stars" />
       <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
