@@ -14,7 +14,6 @@ const ItemCount = (props) => {
 
   return (
     <>
-      <h3>Articulo</h3>
       <div>Stock: {props.stock}</div>
       <div className="contOp">
         <button onClick={restar}>Restar</button>
