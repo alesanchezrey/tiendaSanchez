@@ -17,6 +17,14 @@ const data = [
     },
     {
         id: "3",
+        category: "Otros",
+        title: "Harry Potter",
+        price: 15,
+        image: "https://funkobr.com/wp-content/uploads/2020/08/harry-potter-com-hedwig-funko-pop-1.jpg",
+        stock: 10
+    },
+    {
+        id: "4",
         category: "Marvel",
         title: "Deadpool",
         price: 15,
@@ -24,12 +32,20 @@ const data = [
         stock: 10
     },
     {
-        id: "4",
+        id: "5",
         category: "DC",
         title: "Red Hood",
         price: 12,
         image: "https://cf.shopee.com.br/file/72961fb495fc314cadaa70429a6f3912",
         stock: 12
+    },
+    {
+        id: "6",
+        category: "Otros",
+        title: "Obi Wan",
+        price: 15,
+        image: "https://storage.geralgeek.com.br/images/venda/Funko-Pop-Obi-Wan-Kenobi-6304dabf63bed.webp",
+        stock: 10
     }
 ]
 
