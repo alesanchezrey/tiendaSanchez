@@ -1,11 +1,12 @@
 import data from "../mockData";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = ({ greeting }) => {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const id = "2";
+  const {id} = useParams();
 
   useEffect(() => {
     setIsLoading(true);

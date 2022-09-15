@@ -14,7 +14,7 @@ const ItemCount = (props) => {
 
   return (
     <>
-      <div>Stock: {props.stock}</div>
+      <div>Disponibles: {props.stock}</div>
       <div className="contOp">
         <button onClick={restar}>Restar</button>
         <div>{item}</div>
