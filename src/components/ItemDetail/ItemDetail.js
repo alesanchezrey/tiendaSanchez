@@ -1,23 +1,20 @@
+import { useState } from "react"
 import ItemCount from "../ItemCount/ItemCount"
-import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
-const handleOnAdd = (cantidad) => {
-  alert(`Agregaste ${cantidad} productos al carrito`)
-}
 const ItemDetail = ({item}) => {
-  const [count, setCount] = useState(0)
+  const [hasAddedProductToCart, setHasAddedProductToCart] = useState(false)
 
-  const handleClick = () => {
-    console.log("Cantidad de productos en el carrito: " +count)
+  const handleOnAdd = (cantidad) => {
+    setHasAddedProductToCart(true)
   }
     return (
       <div>
           <img width={"200px"} src={item.image} alt={item.title} />
           <h2>{item.title}</h2> 
           <h3>${item.price}</h3>
-          <ItemCount count={count} setCount={setCount} initial={1} stock={item.stock} onAdd={handleOnAdd} />
-          <div><Link to={"/cart"} onClick={handleClick}><button >Ir al Carrito</button></Link></div> 
+          <div>{hasAddedProductToCart ? <Link to={"/cart"} onClick={handleOnAdd}><button >Ir al Carrito</button></Link> : <ItemCount initial={1} stock={item.stock} onAdd={handleOnAdd} />}
+          </div> 
       </div>
     )
   }

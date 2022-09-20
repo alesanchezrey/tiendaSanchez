@@ -1,4 +1,7 @@
-const ItemCount = ({count, setCount, stock, onAdd}) => {
+import React, { useState } from "react"
+
+const ItemCount = ({initial, stock, onAdd}) => {
+  const [count, setCount] = useState(initial)
   
   const restar = () => (count > 0 ? setCount(count - 1) : null)
   const sumar = () =>
