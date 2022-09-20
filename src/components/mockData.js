@@ -13,7 +13,7 @@ const data = [
         title: "Flash",
         price: 12,
         image: "https://m.media-amazon.com/images/I/71Q1S691DGL._AC_SL1500_.jpg",
-        stock: 12
+        stock: 10
     },
     {
         id: "3",
@@ -21,7 +21,7 @@ const data = [
         title: "Harry Potter",
         price: 15,
         image: "https://funkobr.com/wp-content/uploads/2020/08/harry-potter-com-hedwig-funko-pop-1.jpg",
-        stock: 10
+        stock: 15
     },
     {
         id: "4",
@@ -29,7 +29,7 @@ const data = [
         title: "Deadpool",
         price: 15,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8OijZUSmL7xKagxXbbHrcxNRwN87_Gc548A&usqp=CAU",
-        stock: 10
+        stock: 12
     },
     {
         id: "5",

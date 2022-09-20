@@ -1,23 +1,21 @@
-import React, { useState } from "react"
-
-const ItemCount = (props) => {
-  const [item, setItem] = useState(props.initial)
-
-  const restar = () => (item > 0 ? setItem(item - 1) : null)
+const ItemCount = ({count, setCount, stock, onAdd}) => {
+  
+  const restar = () => (count > 0 ? setCount(count - 1) : null)
   const sumar = () =>
-    item <= props.stock - 1
-      ? setItem(item + 1)
+    count <= stock - 1
+      ? setCount(count + 1)
       : alert("No hay más articulos disponibles")
-  const handleOnAdd = () => {
-    if (item <= props.stock) props.onAdd(item)
-  }
+  
+    const handleOnAdd = () => {
+    if (count <= stock) onAdd(count)
+    }
 
   return (
     <>
-      <div>Disponibles: {props.stock}</div>
+      <div>Disponibles: {stock}</div>
       <div className="contOp">
         <button onClick={restar}>Restar</button>
-        <div>{item}</div>
+        <div>{count}</div>
         <button onClick={sumar}>Sumar</button>
       </div>
       <div><button onClick={handleOnAdd}>Agregar al carrito</button></div>
