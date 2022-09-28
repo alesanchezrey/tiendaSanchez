@@ -15,8 +15,27 @@ export const CartProvider = ({children}) => {
     const isInCart = (id) => {
         return cart.some((item) => item.id === id)
     }
+
+    const removeItem = (productId) => {
+        let newArray = []
+        cart.forEach((product) => {
+            if (product.id === productId){
+                console.log(product)
+            }else {
+                newArray.push(product)
+            }
+        }
+
+        )
+        setCart(newArray)
+    }
+
+    const totalItems = () => {
+        return cart.reduce((acc, cartItem) => acc + cartItem.cantidad, 0)
+    }
+
     return (
-        <CartContext.Provider value={{ cart, addToCart }}>
+        <CartContext.Provider value={{ cart, addToCart, removeItem, totalItems }}>
             {children}
         </CartContext.Provider>
     )

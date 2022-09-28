@@ -15,7 +15,11 @@ a { text-decoration: none;
 
 .logoCarrito {
   width: 30px;
-  margin-right: 30px;
+  margin-right: 0px;
+}
+
+.total {
+  padding: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -71,10 +75,6 @@ a { text-decoration: none;
   font-family: 'Lato', sans-serif;
 }
 
-.navBarMenu img {
-  padding: 10px;
-}
-
 .contOp {
   display: inline-flex;
   padding: 20px;
@@ -100,6 +100,17 @@ a { text-decoration: none;
 
 .listContainer a {
   color: black;
+}
+
+.contCarrito a {
+  color: black;
+}
+
+.itemView {
+  display: flex;
+  height: 200px;
+  justify-content: space-around;
+  padding: 20px;
 }
 
 .footer {
