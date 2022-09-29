@@ -15,7 +15,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path='/' element={<ItemListContainer greeting="Bienvenido a Funko Pop Stars"/>} />
-          <Route path='/category/:category' element={<ItemListContainer/>} />
+          <Route path='/category/:categoryName' element={<ItemListContainer/>} />
           <Route path='/item/:id' element={<ItemDetailContainer/>} />
           <Route path='cart' element={<Cart/>} />
         </Routes>

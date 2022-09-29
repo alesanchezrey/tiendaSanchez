@@ -2,33 +2,28 @@ import data from "../mockData";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import { getFirestore, doc, getDoc } from "firebase/firestore"
 
 const ItemDetailContainer = ({ greeting }) => {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const {id} = useParams();
+  const db = getFirestore()
+  
+  
+const getProduct = () => {
+  const queryDoc = doc(db, "items", id)
 
-  useEffect(() => {
-    setIsLoading(true);
+  getDoc(queryDoc)
+  .then((res) => {
+    setProduct(res.data())
+  })
+  .catch((err) => console.log(err))
+}
 
-    const getProducts = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(data);
-      }, 2000);
-    });
-
-    getProducts
-      .then((response) => {
-        setProduct(response.find((item) => item.id === id));
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [id]);
-
-  if (isLoading) {
-    return <h1>Cargando detalle del producto ...</h1>;
-  }
+useEffect(() => {
+  getProduct()
+}, [id])  
 
   return (
     <>

@@ -2,39 +2,42 @@ import data from "../mockData"
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import Itemlist from "../ItemList/Itemlist"
+import { getFirestore, getDocs, collection, query, where } from "firebase/firestore"
 
 const ItemListContainer = ({greeting}) => {
   const [productList, setProductList] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const {category} = useParams()
+  const {categoryName} = useParams()
 
-  useEffect(() => {
-    setIsLoading(true)
-
-    const getProducts = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(data)
-      }, 1000)
-    })
-
-    getProducts
-      .then((response) => {
-        category ? setProductList(response.filter((item) => item.category === category)) : setProductList(response)
+  const getProducts = () => {
+    const db = getFirestore()
+    const querySnapshot = collection(db, "items")
+    
+    if(categoryName) {
+      const queryFilter = query(querySnapshot, where("category", "==", categoryName))
+      getDocs(queryFilter).then((response) => {
+        const data = response.docs.map((product) => {
+          return { id: product.id, ...product.data()}
+        })
+        setProductList(data)
       })
-      .finally(() => {
-        setIsLoading(false)
-      });
-  }, [category])
-
-  if (isLoading) {
-    return <h1>Cargando...</h1>
+    }else {
+      getDocs(querySnapshot).then((response) => {
+        const data = response.docs.map((product) => {
+          return { id: product.id, ...product.data()}
+        })
+        setProductList(data)
+      })
+    }
   }
   
+  useEffect(() => {
+    getProducts()
+  }, [categoryName])
 
   return (
     <>
     <h1>{greeting}</h1>
-    <h1>{category}</h1>
+    <h1>{categoryName}</h1>
     <Itemlist lista={productList}/>
     </>
   )
