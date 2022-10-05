@@ -1,4 +1,3 @@
-import data from "../mockData"
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import Itemlist from "../ItemList/Itemlist"
