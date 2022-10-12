@@ -5,7 +5,8 @@ import { collection, addDoc, getFirestore, updateDoc, doc } from "firebase/fires
 import moment from "moment"
 
 const Cart = () => {
-const { cart, addToCart, removeItem } = useContext(CartContext)
+const { cart, addToCart, removeItem, clear } = useContext(CartContext)
+const total = cart.reduce((previousValue, currentValue)=> previousValue + currentValue.price * currentValue.cantidad,0 );
 const db = getFirestore()
 
 const createOrder = () => {
@@ -16,7 +17,7 @@ const createOrder = () => {
       email: "jose@jose.com"
     },
     items: cart,
-    total: cart.reduce((valorPasado, valorActual) => valorPasado + (valorActual.price * valorActual.quantity), 0 ),
+    total: cart.reduce((valorPasado, valorActual) => valorPasado + (valorActual.price * valorActual.cantidad), 0 ),
     date: moment().format(),
   }
   const query = collection(db, "orders")
@@ -43,7 +44,8 @@ const createOrder = () => {
                 <img src={item.image} alt={item.title} />
                 <h3>Producto: {item.title}</h3>
                 <p>Precio: ${item.price}</p>
-                <p>Canntidad: {item.cantidad}</p>
+                <p>Cantidad: {item.cantidad}</p>
+                <p>Sub-Total: ${item.price * item.cantidad}</p>
                 <button onClick={() => removeItem(item.id)}>Eliminar</button>
             </div>    
     ))}
@@ -51,7 +53,9 @@ const createOrder = () => {
     )
     }
     <div>
+      <p>Total Compra: ${total}</p>
       <button onClick={createOrder}>Crear Orden</button>
+      <button onClick={clear}>Vaciar Carrito</button>
     </div>
     </div>
   )

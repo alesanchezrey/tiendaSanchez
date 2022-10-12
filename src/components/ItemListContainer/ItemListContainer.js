@@ -14,15 +14,15 @@ const ItemListContainer = ({greeting}) => {
     if(categoryName) {
       const queryFilter = query(querySnapshot, where("category", "==", categoryName))
       getDocs(queryFilter).then((response) => {
-        const data = response.docs.map((product) => {
-          return { id: product.id, ...product.data()}
+        const data = response.docs.map((doc) => {
+          return { id: doc.id, ...doc.data()}
         })
         setProductList(data)
       })
     }else {
       getDocs(querySnapshot).then((response) => {
-        const data = response.docs.map((product) => {
-          return { id: product.id, ...product.data()}
+        const data = response.docs.map((doc) => {
+          return { id: doc.id, ...doc.data()}
         })
         setProductList(data)
       })
