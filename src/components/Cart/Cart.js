@@ -6,7 +6,6 @@ import moment from "moment"
 
 const Cart = () => {
 const { cart, removeItem, clear } = useContext(CartContext)
-const db = getFirestore()
 const [total, setTotal] = useState("0")
 const [update, setUpdate] = useState(false)
 const [values, setValues] = useState ({
@@ -16,12 +15,12 @@ const [values, setValues] = useState ({
 })
 
 const createOrder = () => {
-  
+  const db = getFirestore()
   const order = {
     buyer: {
       name: `${values.name}`,
       phone: `${values.phone}`,
-      email: `${values.email}`
+      email: `${values.email}`,
     },
     items: cart,
     total: total,
@@ -31,7 +30,7 @@ const createOrder = () => {
   addDoc(query, order)
   .then(({id}) => {
     console.log(id)
-    alert("Felicidades por tu compra: " +id)
+    alert("Felicidades tu orden de compra es: " +id)
   })
   .catch(() => alert("No se pudo completar tu compra, intenta luego"))
 }
@@ -53,7 +52,7 @@ const deleteAll = () => {
 const buy = (event) => {
   event.preventDefault()
   if (!values.name || !values.email || !values.phone) {
-    alert("Completa todos los campos")
+    alert("Por favor llena los campos con tus datos para crear la orden")
   }else {
     createOrder()
     deleteAll() 
@@ -96,7 +95,7 @@ const handleChange = (event) =>{
               <input
                 id="name"
                 name="name"
-                type="name"
+                type="text"
                 value={values.name}
                 onChange={handleChange}
               />

@@ -5,21 +5,21 @@ import { useState } from "react";
 export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
 
-    const addToCart = (item, cantidad, stock) => {
-        const exist = cart.find ((elemento) => elemento.id === item.id)
-        if (exist) {
-            if (exist.stock < cantidad){
-                alert("Actualmente nos quedan" +(exist.stock) +"productos en stock, porque" +(exist.cantidad) +"estan en tu carrito")
-            }else {
-                exist.cantidad = exist.cantidad + cantidad
-                exist.stock = exist.stock - cantidad
-                setCart([...cart])
-            }
-        }else{
-            setCart([...cart, {...item, cantidad, stock}])
+    const addToCart = (item, cantidad) => {
+        const itemAdded = isInCart(item.id)
+        if (itemAdded) {
+            itemAdded.cantidad = itemAdded.cantidad += cantidad
+            setCart([...cart])
+        } else {
+            setCart([...cart, {...item, cantidad}])
         }
+      console.log('cart', [...cart, {...item, cantidad}])
     }
     
+    const isInCart = (id) => {
+        return cart.find((item) => item.id === id)
+    }
+
     const removeItem = (prodId) => {
         setCart(cart.filter((prod) => prod.id !== prodId))
     }
