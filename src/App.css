@@ -113,6 +113,12 @@ a { text-decoration: none;
   padding: 20px;
 }
 
+.bottomDetail {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
 .footer {
   background-image: linear-gradient(to right, #084C61, #4F6D7A);
   width: 100%;

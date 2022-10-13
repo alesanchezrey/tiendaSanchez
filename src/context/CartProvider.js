@@ -1,33 +1,27 @@
-import { useState } from "react";
 import { CartContext} from "./CartContext";
+import { useState } from "react";
+
 
 export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
 
-    const addToCart = (item, cantidad) => {
-        if (isInCart(item)) {
-            alert("Ya se encuentra en el carrito")
-        } else {
-            setCart([...cart, {...item, cantidad}])
-        }
-      console.log('cart', [...cart, {...item, cantidad}])
-    }
-    const isInCart = (id) => {
-        return cart.some((item) => item.id === id)
-    }
-
-    const removeItem = (productId) => {
-        let newArray = []
-        cart.forEach((product) => {
-            if (product.id === productId){
-                console.log(product)
+    const addToCart = (item, cantidad, stock) => {
+        const exist = cart.find ((elemento) => elemento.id === item.id)
+        if (exist) {
+            if (exist.stock < cantidad){
+                alert("Actualmente nos quedan" +(exist.stock) +"productos en stock, porque" +(exist.cantidad) +"estan en tu carrito")
             }else {
-                newArray.push(product)
+                exist.cantidad = exist.cantidad + cantidad
+                exist.stock = exist.stock - cantidad
+                setCart([...cart])
             }
+        }else{
+            setCart([...cart, {...item, cantidad, stock}])
         }
-
-        )
-        setCart(newArray)
+    }
+    
+    const removeItem = (prodId) => {
+        setCart(cart.filter((prod) => prod.id !== prodId))
     }
 
     const clear = () =>{

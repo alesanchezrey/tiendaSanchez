@@ -9,7 +9,6 @@ const ItemCount = ({stock, onAdd, count, setCount}) => {
 
   return (
     <>
-      <div>Disponibles: {stock}</div>
       <div className="contOp">
         <button onClick={restar}>Restar</button>
         <div>{count}</div>
