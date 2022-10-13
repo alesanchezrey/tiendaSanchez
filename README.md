@@ -10,4 +10,4 @@
 
 ### Demo
 
-![demo](https://github.com/Miguel-Laco/cosecha40-laco/blob/master/public/img/demo-Cosecha40.gif?raw=true)
+![demo](https://github.com/alesanchezrey/tiendaSanchez/blob/main/src/animation.gif?raw=true)
